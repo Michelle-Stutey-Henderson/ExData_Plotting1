@@ -31,11 +31,11 @@ EPC <- EPCdata[EPCdata$Date == "1/2/2007"|EPCdata$Date == "2/2/2007", ]
 EPC$Datetime <- strptime(paste(EPC$Date,EPC$Time, sep =" "),format = "%d/%m/%Y %H:%M:%S")
 
 ## Open graphical device: png 
-png(filename = "plot1.png")
+png(filename = "ExData_Plotting1/plot1.png", width = 480, height = 480)
 
 ## Recreate histogram
 hist(EPC$Global_active_power, col = "red", main = "Global Active Power", 
-     xlab = "Global Active Power (kilowats)", ylab = "Frequency")
+     xlab = "Global Active Power (kilowatts)", ylab = "Frequency")
 
 ## Close graphics device
 dev.off()

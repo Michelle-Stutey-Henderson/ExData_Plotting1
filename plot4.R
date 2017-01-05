@@ -31,7 +31,7 @@ EPC <- EPCdata[EPCdata$Date == "1/2/2007"|EPCdata$Date == "2/2/2007", ]
 EPC$Datetime <- strptime(paste(EPC$Date,EPC$Time, sep =" "),format = "%d/%m/%Y %H:%M:%S")
 
 ## Open graphical device: png 
-png(filename = "plot4.png")
+png(filename = "ExData_Plotting1/plot4.png", width = 480, height = 480)
 
 ## set screen to show 4 graphs 2x2 and adjust margins as needed (default seems fine)
 par(mfcol = c(2,2), mar = c(4,4,2,1))
@@ -41,21 +41,21 @@ par(mfcol = c(2,2), mar = c(4,4,2,1))
 with(EPC, plot(Datetime,Global_active_power, type = "l", xlab = "",
                ylab = "Global Active Power"))
 
-## Graph 2 (bottom left - same as plot3 graphics)
+## Graph 2 (bottom left - same as plot3 graphics; except no border on legend)
 with(EPC, plot(Datetime,Sub_metering_1, type = "n", xlab = "",
                ylab = "Energy sub metering"))
 with(EPC, points(Datetime, Sub_metering_1, type = "l"))
 with(EPC, points(Datetime, Sub_metering_2, type = "l", col = "red"))
 with(EPC, points(Datetime, Sub_metering_3, type = "l", col = "blue"))
-legend("topright", lty = 1,col = c("black","red","blue"), 
+legend("topright", lty = 1,col = c("black","red","blue"), bty = "n",
        legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
 
 
 ## Graph 3 (top right)
-with(EPC, plot(Datetime,Voltage, type = "l"))
+with(EPC, plot(Datetime,Voltage, type = "l", xlab = "datetime"))
      
 ## Graph 4 (bottom right)
-with(EPC, plot(Datetime,Global_reactive_power, type = "l"))
+with(EPC, plot(Datetime,Global_reactive_power, type = "l", xlab = "datetime"))
 
 
 ## Close graphics device

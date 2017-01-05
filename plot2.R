@@ -31,7 +31,7 @@ EPC <- EPCdata[EPCdata$Date == "1/2/2007"|EPCdata$Date == "2/2/2007", ]
 EPC$Datetime <- strptime(paste(EPC$Date,EPC$Time, sep =" "),format = "%d/%m/%Y %H:%M:%S")
 
 ## Open graphical device: png 
-png(filename = "plot2.png")
+png(filename = "ExData_Plotting1/plot2.png", width = 480, height = 480)
 
 ## Recreate graph
 with(EPC, plot(Datetime,Global_active_power, type = "l", xlab = "",
